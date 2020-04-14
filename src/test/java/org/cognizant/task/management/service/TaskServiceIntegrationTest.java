@@ -53,7 +53,7 @@ public class TaskServiceIntegrationTest {
         simpleTask.setId(0L);
 
         Mockito.when(taskRepository.getFirstById(0L)).thenReturn(simpleTask);
-        Mockito.when(taskRepository.getAllByparent(any())).thenReturn(tasks);
+        Mockito.when(taskRepository.getAllByParent(any())).thenReturn(tasks);
         Mockito.when(taskRepository.findAll()).thenReturn(tasks);
     }
 
@@ -97,7 +97,7 @@ public class TaskServiceIntegrationTest {
         doAnswer((i) -> {
             assertEquals(tasks, i.getArgument(0));
             return null;
-        }).when(taskRepository).getAllByparent(0L);
+        }).when(taskRepository).getAllByParent(0L);
     }
 
     @Test
@@ -112,11 +112,11 @@ public class TaskServiceIntegrationTest {
     }
 
     @Test
-    public void whenDeleteBadId_Fails() {
+    public void whenDeleteHasChildren_Fails() {
         try {
             taskService.deleteTask(0L);
         } catch (Exception e) {
-            assert e.getMessage().equals("The task with such id does not exist!");
+            assert e.getMessage().equals("The task has children, it cannot be deleted");
         }
     }
 

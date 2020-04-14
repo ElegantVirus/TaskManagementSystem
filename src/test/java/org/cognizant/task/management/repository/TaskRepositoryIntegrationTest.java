@@ -40,7 +40,7 @@ public class TaskRepositoryIntegrationTest {
         entityManager.persist(task3);
         entityManager.flush();
 
-        List<Task> found = taskRepository.getAllByparent(0L);
+        List<Task> found = taskRepository.getAllByParent(0L);
         assert found.size() == 2;
         assert found.contains(task2);
         assert found.contains(task3);
