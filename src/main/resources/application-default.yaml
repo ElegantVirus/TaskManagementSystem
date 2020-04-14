@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: taskManagement
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:defaultdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+server:
+  port: 9000
