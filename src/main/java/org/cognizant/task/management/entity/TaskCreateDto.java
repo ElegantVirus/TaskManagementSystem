@@ -10,6 +10,6 @@ public class TaskCreateDto {
     private Integer hoursSpent = 0;
     private String group;
     private String assignee;
-    private Long parentId;
+    private Long parent;
     private Boolean finished;
 }

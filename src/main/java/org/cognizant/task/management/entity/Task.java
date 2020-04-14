@@ -26,7 +26,7 @@ public class Task {
     @Column(name = "assignee")
     private String assignee;
     @Column(name = "parent")
-    private Long parentId;
+    private Long parent;
     @Column(name = "finished")
     private Boolean finished;
 
@@ -35,7 +35,7 @@ public class Task {
         this.name = other.getName() == null ? this.name : other.getName();
         this.hoursSpent = other.getHoursSpent() == null ? this.hoursSpent : other.getHoursSpent();
         this.group = other.getGroup() == null ? this.group : other.getGroup();
-        this.parentId = other.getParentId() == null ? this.parentId : other.getParentId();
+        this.parent = other.getParent() == null ? this.parent : other.getParent();
         this.finished = other.getFinished() == null ? this.finished : other.getFinished();
     }
 }

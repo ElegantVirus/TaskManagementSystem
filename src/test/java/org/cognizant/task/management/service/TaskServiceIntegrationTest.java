@@ -53,7 +53,7 @@ public class TaskServiceIntegrationTest {
         simpleTask.setId(0L);
 
         Mockito.when(taskRepository.getFirstById(0L)).thenReturn(simpleTask);
-        Mockito.when(taskRepository.getAllByParentId(any())).thenReturn(tasks);
+        Mockito.when(taskRepository.getAllByparent(any())).thenReturn(tasks);
         Mockito.when(taskRepository.findAll()).thenReturn(tasks);
     }
 
@@ -97,7 +97,7 @@ public class TaskServiceIntegrationTest {
         doAnswer((i) -> {
             assertEquals(tasks, i.getArgument(0));
             return null;
-        }).when(taskRepository).getAllByParentId(0L);
+        }).when(taskRepository).getAllByparent(0L);
     }
 
     @Test
@@ -128,8 +128,8 @@ public class TaskServiceIntegrationTest {
         return tasks;
     }
 
-    private Task createNewTask(String name, Long parentId, Boolean finished) {
-        return new Task(0L, name, 1, "test", "human", parentId, finished);
+    private Task createNewTask(String name, Long parent, Boolean finished) {
+        return new Task(0L, name, 1, "test", "human", parent, finished);
     }
 
     private TaskUpdateDto createNewUpdateTask(Boolean finished) {
@@ -146,7 +146,7 @@ public class TaskServiceIntegrationTest {
         task.setAssignee("person");
         task.setGroup("a");
         task.setHoursSpent(2);
-        task.setParentId(null);
+        task.setParent(null);
         return task;
     }
 }

@@ -78,7 +78,7 @@ public class TaskService {
     }
 
     private boolean canBeUpdated(Long id) {
-        long openTaskCount = taskRepository.getAllByParentId(id)
+        long openTaskCount = taskRepository.getAllByparent(id)
                 .stream()
                 .filter(task -> !task.getFinished())
                 .count();

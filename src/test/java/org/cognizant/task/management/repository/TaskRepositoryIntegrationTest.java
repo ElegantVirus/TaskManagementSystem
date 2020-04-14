@@ -31,7 +31,7 @@ public class TaskRepositoryIntegrationTest {
     }
 
     @Test
-    public void whenFindByParentId_thenReturnMany() {
+    public void whenFindByparent_thenReturnMany() {
         Task task1 = createNewTask("name", null);
         Task task2 = createNewTask("name1", 0L);
         Task task3 = createNewTask("name", 0L);
@@ -40,20 +40,20 @@ public class TaskRepositoryIntegrationTest {
         entityManager.persist(task3);
         entityManager.flush();
 
-        List<Task> found = taskRepository.getAllByParentId(0L);
+        List<Task> found = taskRepository.getAllByparent(0L);
         assert found.size() == 2;
         assert found.contains(task2);
         assert found.contains(task3);
     }
 
-    private Task createNewTask(String name, Long parentId) {
+    private Task createNewTask(String name, Long parent) {
         Task task = new Task();
         task.setName(name);
         task.setFinished(true);
         task.setAssignee("person");
         task.setGroup("a");
         task.setHoursSpent(2);
-        task.setParentId(parentId);
+        task.setParent(parent);
 
         return task;
     }
